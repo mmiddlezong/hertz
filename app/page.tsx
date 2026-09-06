@@ -57,7 +57,7 @@ function Signal({ active }: { active: boolean }) {
 export default function Home() {
   const [phase, setPhase] = useState<Phase>('ready');
   const seconds = 5;
-  const [volume, setVolume] = useState(50);
+  const [volume, setVolume] = useState(100);
   const [muted, setMuted] = useState(false);
   const [remaining, setRemaining] = useState(seconds);
   const [guess, setGuess] = useState('');
@@ -73,7 +73,7 @@ export default function Home() {
   const input = useRef<HTMLInputElement>(null);
   const nextButton = useRef<HTMLButtonElement>(null);
   const busy = useRef(false);
-  const audioLevel = useRef(0.1);
+  const audioLevel = useRef(0.2);
   const mounted = useRef(true);
   const total = results.reduce((sum, r) => sum + r.points, 0);
   const last = results.at(-1);
