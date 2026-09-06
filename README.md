@@ -18,8 +18,8 @@ A compact black card on a white canvas takes you through ready → timed listeni
 ## Rules
 
 - Five rounds of random whole-hertz tones between 100 and 1,000 Hz, sampled logarithmically.
-- Set 5–30 seconds per tone before a session. The sine wave stops on submission or timeout.
-- Enter a frequency in hertz and press Enter. Audio uses a low starting gain with adjustable volume.
+- Each tone has a fixed 5-second time limit. The sine wave stops on submission or timeout.
+- Enter a frequency in hertz and press Enter. Volume defaults to 50% and can be adjusted in settings.
 - Score = round(1000 × exp(−abs(cents) / 100)), where cents = 1200 × log2(guess / target).
 - Late or missing answers earn zero. The visual waveform is illustrative and never encodes the answer.
 - Scores remain in memory for the current session.
@@ -33,3 +33,9 @@ npm run build
 ```
 
 The starter's full lint task reports pre-existing issues in bundled UI components; app code can be checked with `npx oxlint app lib/game.ts`.
+
+## Vercel hosting
+
+Vercel uses `npm run build:vercel` to build this browser-only game into `dist-vercel`. The deployment uses static files and Web Audio in the browser, with no server functions, databases, or paid services. Choose Vercel's free Hobby plan and its included `vercel.app` domain.
+
+Use `npm run dev:vercel` to preview the same browser entry locally. The existing `npm run dev` workflow remains available.

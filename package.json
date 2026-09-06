@@ -11,7 +11,9 @@
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",
     "format": "oxfmt",
-    "test": "node --experimental-strip-types --test tests/game.test.ts"
+    "test": "node --experimental-strip-types --test tests/game.test.ts",
+    "build:vercel": "vite build --config vite.vercel.config.ts",
+    "dev:vercel": "vite --config vite.vercel.config.ts"
   },
   "dependencies": {
     "react": "19.2.6",

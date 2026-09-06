@@ -56,10 +56,10 @@ function Signal({ active }: { active: boolean }) {
 
 export default function Home() {
   const [phase, setPhase] = useState<Phase>('ready');
-  const [seconds, setSeconds] = useState(10);
-  const [volume, setVolume] = useState(20);
+  const seconds = 5;
+  const [volume, setVolume] = useState(50);
   const [muted, setMuted] = useState(false);
-  const [remaining, setRemaining] = useState(10);
+  const [remaining, setRemaining] = useState(seconds);
   const [guess, setGuess] = useState('');
   const [results, setResults] = useState<Result[]>([]);
   const [error, setError] = useState('');
@@ -73,7 +73,7 @@ export default function Home() {
   const input = useRef<HTMLInputElement>(null);
   const nextButton = useRef<HTMLButtonElement>(null);
   const busy = useRef(false);
-  const audioLevel = useRef(0.04);
+  const audioLevel = useRef(0.1);
   const mounted = useRef(true);
   const total = results.reduce((sum, r) => sum + r.points, 0);
   const last = results.at(-1);
@@ -245,27 +245,10 @@ export default function Home() {
               <Settings2 size={18} />
             </DialogTrigger>
             <DialogContent className="settings-dialog">
-              <DialogTitle>Make it your tempo.</DialogTitle>
+              <DialogTitle>Sound settings</DialogTitle>
               <DialogDescription>
-                Five tones, from 100 to 1,000 Hz. Choose how long you get to
-                name each one.
+                Five tones, from 100 to 1,000 Hz. Five seconds to name each one.
               </DialogDescription>
-              <div className="setting-label">
-                <span id="time-label">Time per tone</span>
-                <b>{seconds}s</b>
-              </div>
-              <Slider
-                aria-labelledby="time-label"
-                min={5}
-                max={30}
-                step={5}
-                value={[seconds]}
-                onValueChange={(v) => setSeconds(Array.isArray(v) ? v[0] : v)}
-              />
-              <div className="slider-endpoints">
-                <span>5s · quick</span>
-                <span>30s · take your time</span>
-              </div>
               <div className="setting-label">
                 <span id="volume-label">Volume</span>
                 <b>{volume}%</b>
