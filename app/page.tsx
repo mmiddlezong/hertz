@@ -520,7 +520,14 @@ export default function Home() {
       </div>
       <footer className="site-footer">
         <span>100–1,000 Hz</span>
-        <span>Pure sine. Pure instinct.</span>
+        <a
+          className="inspiration-credit"
+          href="https://dialed.gg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Inspired by dialed.gg <span aria-hidden="true">↗</span>
+        </a>
       </footer>
     </main>
   );
